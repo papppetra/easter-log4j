@@ -1,4 +1,4 @@
-log4j-example
+easter-log4j
 =============
+Happy Easter!
 
-Example project that demonstrates how to configure [Apache Log4j 2](https://logging.apache.org/log4j/2.x/).
