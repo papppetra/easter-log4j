@@ -1,0 +1,41 @@
+<Configuration status="debug">
+    <Properties>
+        <Property name="LOG_PATTERN">%X{iterations} / %X{iterationAll} - %-5p - %msg%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{${LOG_PATTERN}}"/>
+        </Console>
+        <File name="File1" fileName="question.log" append="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <MarkerFilter  marker="question" onMatch = "ACCEPT" onMismatch ="DENY"/>
+        </File>
+        <File name="File2" fileName="statement.log" append="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <MarkerFilter  marker="statement" onMatch = "ACCEPT" onMismatch ="DENY"/>
+        </File>
+        <File name="File3" fileName="noMarked.log" append="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="File4" fileName="Győrfi_Pál.log" append="false">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <TimeFilter start="20:00:00" end="05:00:00" onMatch = "ACCEPT" onMismatch ="DENY"/>
+        </File>
+
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File1"/>
+            <AppenderRef ref="File2"/>
+            <AppenderRef ref="File3"/>
+            <AppenderRef ref="File4"/>
+        </Root>
+        <!-->
+        <Logger name="Main" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+    <!-->
+    </Loggers>
+</Configuration>
